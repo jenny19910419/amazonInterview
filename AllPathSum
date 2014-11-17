@@ -1,0 +1,24 @@
+void helper(TreeNode* root, int cur, int &sum) {
+    cur= cur*10 + root->val;
+    if (root->left==NULL && root->right==NULL) {
+        sum += cur;
+        return;
+    }
+    if (root->left) {
+        helper(root->left, cur, sum);
+    }
+    if (root->right) {
+        helper(root->right, cur, sum);
+    }
+    
+}
+
+int getSum(TreeNode* root) {
+    if (root==NULL) {
+        return -1;
+    }
+    int sum=0;
+    int cur = 0;
+    helper(root,cur,sum);
+    return sum;
+}
